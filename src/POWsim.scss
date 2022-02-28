@@ -1,7 +1,6 @@
 body {
   margin: 0;
   width: 100vw;
-  height: 100vh;
   background-color: #0f0f0f;
   color: #f0f0f0;
 
@@ -11,23 +10,30 @@ body {
 
 
   div#POWsim {
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 1rem;
 
 
-    h3#title {
-      font-weight: 300;
-      margin: 2rem;
+    header {
+      margin: 1rem;
+      text-align: center;
 
 
-      span#name {
-        font-weight: 500;
+      h1#title {
+        font-weight: 400;
+        margin: 0;
+      }
+  
+      h3#subtitle {
+        font-weight: 300;
+        margin: 0;
       }
     }
 
     button#workButton {
+      margin: 1rem;
       padding: .3rem;
       border: 2px outset;
       border-radius: 2px;

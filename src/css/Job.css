@@ -1,19 +1,16 @@
 div#job {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: block;
   margin: 1rem;
+  width: 24rem;
 }
 
-div#job div#labels p {
+div#job p {
   margin: .5rem;
   font-size: .9rem;
-  text-align: right;
+  text-align: center;
 }
 
-div#job div#data p {
-  margin: .5rem;
-  font-size: .9rem;
-  text-align: left;
+div#job p#pow, div#job p#zeroes, div#job p#message {
+  margin: 0 0 2rem 0;
 }
 /*# sourceMappingURL=Job.css.map */

@@ -1,11 +1,27 @@
-import { ReactElement } from 'react';
+import { ReactElement, memo } from 'react';
 import '../../css/Hash.css'
 
-const Hash = (props: {hash: string[]}) => {
+const Hash = (props: {hash: string|null}) => {
+
+  const getWordArray = (): string[] => {
+    let wordArray: string[] = [];
+
+    if (props.hash === null) {
+      for (let _i = 0; _i < 8; _i++) {
+        wordArray.push("".padStart(32, '0'));
+      }
+    }
+
+    for (let _i = 0; _i < (props.hash as string).length; _i += 32) {
+      wordArray.push((props.hash as string).slice(_i, _i + 32));
+    }
+    return wordArray;
+  }
+
   return (
     <div id='hash'>
       {
-        props.hash.map((index: string): ReactElement<null> => (
+        getWordArray().map((index: string): ReactElement<null> => (
           <p className='hashLine'>
             {index}
           </p>
@@ -15,4 +31,4 @@ const Hash = (props: {hash: string[]}) => {
   );
 }
 
-export default Hash;
+export default memo(Hash);

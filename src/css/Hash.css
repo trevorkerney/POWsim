@@ -1,3 +1,7 @@
+div#hash {
+  margin: 1rem;
+}
+
 div#hash p.hashLine {
   margin: 0;
   font-size: .9rem;

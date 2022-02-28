@@ -5,6 +5,7 @@ const Fields = (props: {
   message: string, 
   onNumZeroesChange: (numZeroes: number) => void, 
   onMessageChange: (message: string) => void
+  isWorking: boolean
 }) => {
 
   const handleNumZeroesChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -16,7 +17,16 @@ const Fields = (props: {
   }
   
   return (
-    <div id='fields'>
+    <div
+      id='fields'
+      style={
+        props.isWorking ? {
+          display: 'none'
+        } : {
+          display: 'flex'
+        }
+      }
+    >
 
       <p id='numZeroesText'># of zeroes</p>
       <input 

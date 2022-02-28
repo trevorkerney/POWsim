@@ -14,7 +14,7 @@
       "strict": true,
       "moduleResolution": "node",
       "esModuleInterop": true,
-      "noImplicitAny": true
+      "noImplicitAny": false
   },
   "include": [
     "./src/**/*.tsx",

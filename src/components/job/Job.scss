@@ -1,20 +1,15 @@
 div#job {
-  display: flex;
+  display: block;
   margin: 1rem;
+  width: 24rem;
 
-  div#labels {
-    p {
-      margin: .5rem;
-      font-size: .9rem;
-      text-align: right;
-    }
+  p {
+    margin: .5rem;
+    font-size: .9rem;
+    text-align: center;
   }
 
-  div#data {
-    p {
-      margin: .5rem;
-      font-size: .9rem;
-      text-align: left;
-    }
+  p#pow, p#zeroes, p#message {
+    margin: 0 0 2rem 0;
   }
 }
