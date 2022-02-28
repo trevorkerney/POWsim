@@ -1,0 +1,11 @@
+{
+  "editor.tabSize": 2,
+  "liveSassCompile.settings.formats":[
+      {
+          "format": "expanded",
+          "extensionName": ".css",
+          "savePath": "/src/css/"
+      },
+  ],
+  "typescript.tsdk": "node_modules\\typescript\\lib",
+}

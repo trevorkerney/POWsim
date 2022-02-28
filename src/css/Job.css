@@ -1,0 +1,19 @@
+div#job {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 1rem;
+}
+
+div#job div#labels p {
+  margin: .5rem;
+  font-size: .9rem;
+  text-align: right;
+}
+
+div#job div#data p {
+  margin: .5rem;
+  font-size: .9rem;
+  text-align: left;
+}
+/*# sourceMappingURL=Job.css.map */
