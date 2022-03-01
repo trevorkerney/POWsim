@@ -20,7 +20,7 @@ npm start
 
 POWsim is a proof of work simulator, but what is proof of work?
 
-Proof of work is notably used in the Bitcoin network as trustless consensus method, meaning it serves as a means of verifying transactions without the need for a central authority, such as a bank ....but how? The answers are in cryptography.
+Proof of work is most notably used in the Bitcoin network as trustless consensus method, meaning it serves as a means of verifying transactions without the need for a central authority such as a bank ....but how? The answers are in cryptography.
 
 At its core, proof of work is exactly how it sounds; it is proof that computational work (processing) was expended. But how do we expend this work and how do we prove that we did it?
 
