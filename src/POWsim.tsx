@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import { SHA256, enc } from 'crypto-js';
 
-import hexToBin from './ts/hexToBin';
-
 import './css/POWsim.css';
 
 import Hash from './components/hash/Hash'
@@ -47,20 +45,21 @@ const POWsim = () => {
     }
   }
 
-  const testPOW = () => {
-    const hash = SHA256(`${currentMessage}---${currentPOW}`);
-    const hex = hash.toString(enc.Hex);
-    const bin = BigInt('0x' + hex).toString(2).padStart(256, '0');
-    setCurrentHash(bin);
-    if (bin.startsWith("".padStart(currentNumZeroes, '0'))) {
-      setCurrentHash(bin);
-      setIsPOWFound(true);
-      return true;
-    }
-    return false;
-  }
-
   useEffect(() => {
+
+    const testPOW = () => {
+      const hash = SHA256(`${currentMessage}---${currentPOW}`);
+      const hex = hash.toString(enc.Hex);
+      const bin = BigInt('0x' + hex).toString(2).padStart(256, '0');
+      setCurrentHash(bin);
+      if (bin.startsWith("".padStart(currentNumZeroes, '0'))) {
+        setCurrentHash(bin);
+        setIsPOWFound(true);
+        return true;
+      }
+      return false;
+    }
+
     if (isWorking && !isPOWFound)
     {
       const timer = setInterval(() => {
@@ -71,6 +70,7 @@ const POWsim = () => {
       }, workingSpeed);
       return () => clearTimeout(timer);
     }
+    
   }, [isWorking, currentPOW, isPOWFound])
 
   return (
