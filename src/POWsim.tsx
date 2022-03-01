@@ -29,7 +29,6 @@ const POWsim = () => {
     setCurrentMessage(message);
   }
 
-  // ispowfound
   const workChangeHandler = (): void => {
     if (isWorking) {
       setIsPOWFound(false);
@@ -51,10 +50,9 @@ const POWsim = () => {
   const testPOW = () => {
     const hash = SHA256(`${currentMessage}---${currentPOW}`);
     const hex = hash.toString(enc.Hex);
-    const bin = hexToBin(hex).padStart(256, '0');
+    const bin = BigInt('0x' + hex).toString(2).padStart(256, '0');
     setCurrentHash(bin);
     if (bin.startsWith("".padStart(currentNumZeroes, '0'))) {
-      console.log('success')
       setCurrentHash(bin);
       setIsPOWFound(true);
       return true;
