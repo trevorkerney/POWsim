@@ -71,7 +71,7 @@ const POWsim = () => {
       return () => clearTimeout(timer);
     }
     
-  }, [isWorking, currentPOW, isPOWFound])
+  }, [isWorking, currentPOW, isPOWFound, currentMessage, currentNumZeroes])
 
   return (
     <div id='POWsim'>
