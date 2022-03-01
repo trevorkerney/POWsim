@@ -14,6 +14,8 @@ npm install
 npm start
 ```
 
+You also need a Sass compiler to generate necessary CSS files into /src/css. This project includes predefined config for Ritwick Dey's Live Sass Compiler on VSCode.
+
 ---
 
 ## What is this?
