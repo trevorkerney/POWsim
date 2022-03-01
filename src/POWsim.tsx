@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
-
 import { SHA256, enc } from 'crypto-js';
 
 import hexToBin from './ts/hexToBin';
+
+import './css/POWsim.css';
 
 import Hash from './components/hash/Hash'
 import Job from './components/job/Job';
 import Fields from './components/fields/Fields';
 
-import './css/POWsim.css';
-
 const POWsim = () => {
+  const workingSpeed: number = 4; // milliseconds
 
   const [currentHash, setCurrentHash] = useState<string>(
     "".padStart(256, '1')
@@ -19,6 +19,7 @@ const POWsim = () => {
   const [currentNumZeroes, setCurrentNumZeroes] = useState<number>(10);
   const [currentMessage, setCurrentMessage] = useState<string>("");
   const [currentPOW, setCurrentPOW] = useState<number>(0);
+  const [isPOWFound, setIsPOWFound] = useState<boolean>(false);
 
   const numZeroesChangeHandler = (numZeroes: number) => {
     setCurrentNumZeroes(numZeroes);
@@ -28,12 +29,19 @@ const POWsim = () => {
     setCurrentMessage(message);
   }
 
-  const workChangeHandler = () => {
+  // ispowfound
+  const workChangeHandler = (): void => {
     if (isWorking) {
-      setIsWorking(false)
+      setIsPOWFound(false);
+      setIsWorking(false);
+      const timer = setTimeout(() => {
+        setCurrentHash("".padStart(256, '1'));
+        return () => clearTimeout(timer);
+      }, workingSpeed);
     } else {
       if (currentMessage.length > 0) {
-        setIsWorking(true)
+        setCurrentPOW(0);
+        setIsWorking(true);
       } else {
         alert("You must input a message.");
       }
@@ -45,27 +53,27 @@ const POWsim = () => {
     const hex = hash.toString(enc.Hex);
     const bin = hexToBin(hex).padStart(256, '0');
     setCurrentHash(bin);
-    if ((currentHash as string).startsWith("".padStart(currentNumZeroes, '0'))) {
-      setCurrentHash(currentHash);
+    if (bin.startsWith("".padStart(currentNumZeroes, '0'))) {
+      console.log('success')
+      setCurrentHash(bin);
+      setIsPOWFound(true);
       return true;
     }
     return false;
   }
 
   useEffect(() => {
-    if (isWorking)
+    if (isWorking && !isPOWFound)
     {
       const timer = setInterval(() => {
         if (testPOW()) {
           return () => clearTimeout(timer);
         }
         setCurrentPOW((prev) => (prev += 1));
-      }, 20);
+      }, workingSpeed);
       return () => clearTimeout(timer);
-    } else {
-      setCurrentPOW(0);
     }
-  }, [isWorking, currentPOW])
+  }, [isWorking, currentPOW, isPOWFound])
 
   return (
     <div id='POWsim'>
@@ -79,6 +87,7 @@ const POWsim = () => {
         message={currentMessage} 
         pow={currentPOW} 
         isWorking={isWorking} 
+        isPOWFound={isPOWFound}
       />
       <Fields
         numZeroes={currentNumZeroes} 
@@ -92,12 +101,15 @@ const POWsim = () => {
         onClick={workChangeHandler}
         style={
           (isWorking) 
-          ? {
-            backgroundColor: '#be4444',
-            border: '2px #a03a3a outset'
-            
-          } : {
-            
+          ? (isPOWFound)
+            ? {
+              backgroundColor: '#25ca56',
+              border: '2px #1f9b44 outset'
+            } : {
+              backgroundColor: '#be4444',
+              border: '2px #a03a3a outset'
+            }
+          : {
             backgroundColor: '#25ca56',
             border: '2px #1f9b44 outset'
           }
@@ -105,7 +117,9 @@ const POWsim = () => {
       >
         {
           (isWorking)
-          ? "Stop!"
+          ? (isPOWFound)
+            ? "Reset!"
+            : "Stop!"
           : "Work!"
         }
       </button>

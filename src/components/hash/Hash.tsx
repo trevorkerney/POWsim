@@ -1,4 +1,5 @@
 import { ReactElement, memo } from 'react';
+
 import '../../css/Hash.css'
 
 const Hash = (props: {hash: string|null}) => {
@@ -22,7 +23,7 @@ const Hash = (props: {hash: string|null}) => {
     <div id='hash'>
       {
         getWordArray().map((index: string): ReactElement<null> => (
-          <p className='hashLine'>
+          <p className='hashLine' key={Math.random()}>
             {index}
           </p>
         ))
