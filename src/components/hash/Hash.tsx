@@ -32,4 +32,4 @@ const Hash = (props: {hash: string|null}) => {
   );
 }
 
-export default memo(Hash);
+export default Hash;
