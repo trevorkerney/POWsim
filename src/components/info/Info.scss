@@ -14,6 +14,14 @@ div#info {
     text-decoration: underline;
     color: #f0f0f0;
     cursor: pointer;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:active {
+      opacity: 0.6;
+    }
   }
 
   div#what {
