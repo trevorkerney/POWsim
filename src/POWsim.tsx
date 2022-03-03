@@ -6,6 +6,7 @@ import './css/POWsim.css';
 import Hash from './components/hash/Hash'
 import Job from './components/job/Job';
 import Fields from './components/fields/Fields';
+import Info from './components/info/Info';
 
 const POWsim = () => {
   const workingSpeed: number = 4; // milliseconds
@@ -121,6 +122,7 @@ const POWsim = () => {
           : "Work!"
         }
       </button>
+      <Info />
     </div>
   );
 }
