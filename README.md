@@ -1,5 +1,7 @@
 # POWsim - a proof of work simulator
 
+https://powsim.trevorkerney.com/
+
 ## Installation
 
 To run this app locally, open a terminal in the project directory and run the following commands:
