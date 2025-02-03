@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  width: 100%;
+  background-color: #0f0f0f;
+  color: #f0f0f0;
+
+  font-family: 'Roboto';
+  font-weight: 300;
+  
+
+  div#POWsim {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+
+
+    header {
+      margin: 1rem;
+      text-align: center;
+
+
+      h1#title {
+        font-family: 'Times New Roman';
+        font-weight: 400;
+        margin: 0;
+      }
+  
+      h3#subtitle {
+        font-weight: 300;
+        margin: 0;
+      }
+    }
+
+    button#workButton {
+      margin: 1rem;
+      padding: .3rem;
+      border: 2px outset;
+      border-radius: 2px;
+
+      &:hover {
+        opacity: 0.8;
+      }
+
+      &:active {
+        opacity: 0.6;
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+div#job {
+  display: block;
+  margin: 1rem;
+  width: 24rem;
+
+  p {
+    margin: .5rem;
+    font-size: .9rem;
+    text-align: center;
+  }
+
+  p#pow, p#zeroes, p#message {
+    margin: 0 0 2rem 0;
+  }
+}
